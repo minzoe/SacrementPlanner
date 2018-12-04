@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SacrementPlanner", "SacrementPlanner\SacrementPlanner.csproj", "{F1EFCF52-C71B-4ED6-9116-FC374DC36B6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1EFCF52-C71B-4ED6-9116-FC374DC36B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1EFCF52-C71B-4ED6-9116-FC374DC36B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1EFCF52-C71B-4ED6-9116-FC374DC36B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1EFCF52-C71B-4ED6-9116-FC374DC36B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B91DA8BF-2B6D-4A39-AFAE-4F7B0D8F504D}
+	EndGlobalSection
+EndGlobal
