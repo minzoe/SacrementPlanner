@@ -28,6 +28,24 @@ body {
     margin: 15px;
 }
 
+/* Navbar */
+.navbar {
+    background-color: #00275e;
+    border-color: #00275e;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #00275e;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #a8b1b8;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #feb729;
+}
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */

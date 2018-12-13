@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SacrementPlanner.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,7 +33,7 @@ namespace SacrementPlanner.Migrations
                     IntermediateSong = table.Column<string>(nullable: true),
                     ClosingSong = table.Column<string>(nullable: true),
                     SacramentDate = table.Column<DateTime>(nullable: false),
-                    Conductor = table.Column<int>(nullable: false)
+                    Bishopric = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

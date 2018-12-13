@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SacrementPlanner.Models;
 
 namespace SacrementPlanner.Migrations
 {
     [DbContext(typeof(BulletinContext))]
-    partial class BulletinContextModelSnapshot : ModelSnapshot
+    [Migration("20181213155830_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +42,7 @@ namespace SacrementPlanner.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BishopricId");
+                    b.Property<int>("Bishopric");
 
                     b.Property<string>("ClosingSong");
 
@@ -53,8 +55,6 @@ namespace SacrementPlanner.Migrations
                     b.Property<string>("SacramentSong");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("BishopricId");
 
                     b.ToTable("Planner");
                 });
@@ -74,14 +74,6 @@ namespace SacrementPlanner.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Speakers");
-                });
-
-            modelBuilder.Entity("SacrementPlanner.Models.Planner", b =>
-                {
-                    b.HasOne("SacrementPlanner.Models.Bishopric", "Bishopric")
-                        .WithMany()
-                        .HasForeignKey("BishopricId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

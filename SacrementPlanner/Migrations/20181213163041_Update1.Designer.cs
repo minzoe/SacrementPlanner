@@ -10,8 +10,8 @@ using SacrementPlanner.Models;
 namespace SacrementPlanner.Migrations
 {
     [DbContext(typeof(BulletinContext))]
-    [Migration("20181207034220_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20181213163041_Update1")]
+    partial class Update1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,9 +42,9 @@ namespace SacrementPlanner.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClosingSong");
+                    b.Property<int>("BishopricId");
 
-                    b.Property<int>("Conductor");
+                    b.Property<string>("ClosingSong");
 
                     b.Property<string>("IntermediateSong");
 
@@ -55,6 +55,8 @@ namespace SacrementPlanner.Migrations
                     b.Property<string>("SacramentSong");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("BishopricId");
 
                     b.ToTable("Planner");
                 });
@@ -74,6 +76,14 @@ namespace SacrementPlanner.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Speakers");
+                });
+
+            modelBuilder.Entity("SacrementPlanner.Models.Planner", b =>
+                {
+                    b.HasOne("SacrementPlanner.Models.Bishopric", "Bishopric")
+                        .WithMany()
+                        .HasForeignKey("BishopricId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

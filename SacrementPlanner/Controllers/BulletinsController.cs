@@ -21,7 +21,9 @@ namespace SacrementPlanner.Controllers
         // GET: Bulletins
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Planner.ToListAsync());
+            return View(await _context.Planner
+                .Include(b => b.Bishopric)
+                .ToListAsync());
         }
 
         // GET: Bulletins/Details/5
@@ -53,7 +55,7 @@ namespace SacrementPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,OpeningSong,SacramentSong,IntermediateSong,ClosingSong,SacramentDate,Conductor")] Planner planner)
+        public async Task<IActionResult> Create([Bind("ID,OpeningSong,SacramentSong,IntermediateSong,ClosingSong,SacramentDate,BishopricId")] Planner planner)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +87,7 @@ namespace SacrementPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,OpeningSong,SacramentSong,IntermediateSong,ClosingSong,SacramentDate,Conductor")] Planner planner)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,OpeningSong,SacramentSong,IntermediateSong,ClosingSong,SacramentDate,BishopricId")] Planner planner)
         {
             if (id != planner.ID)
             {

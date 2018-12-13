@@ -32,12 +32,12 @@ namespace SacrementPlanner.Models
 
             var planner = new Planner[]
             {
-                new Planner{OpeningSong="Sing a Song of Sixpence",SacramentSong="There is a Green Hill Far Away",IntermediateSong="Book of Mormon Stories",ClosingSong="Christmas Bells", Conductor=1, SacramentDate=DateTime.Parse("2009-05-06")},
-                new Planner{OpeningSong="Mary had a Little Lamb",SacramentSong="Article of Faith 1",IntermediateSong="A Child's Prayer",ClosingSong="Go Tell it on the Mountain", Conductor=2, SacramentDate=DateTime.Parse("2009-06-08")},
-                new Planner{OpeningSong="Hickory Dickory Dock",SacramentSong="Article of Faith 2",IntermediateSong="",ClosingSong="Silent Night", Conductor=3, SacramentDate=DateTime.Parse("2009-11-25")},
-                new Planner{OpeningSong="Little Miss Muffet",SacramentSong="Article of Faith 4",IntermediateSong="Pioneer Children",ClosingSong="Joy to the World", Conductor=4, SacramentDate=DateTime.Parse("2012-01-15")},
-                new Planner{OpeningSong="Hey Diddle Diddle",SacramentSong="Article of Faith 5",IntermediateSong="All Over the World",ClosingSong="Picture a Christmas", Conductor=5, SacramentDate=DateTime.Parse("2018-07-12")},
-                new Planner{OpeningSong="Funky Jesus Music",SacramentSong="Article of Faith 6",IntermediateSong="",ClosingSong="Said Samuel", Conductor=1, SacramentDate=DateTime.Parse("2016-06-02")}
+                new Planner{OpeningSong="Sing a Song of Sixpence",SacramentSong="There is a Green Hill Far Away",IntermediateSong="Book of Mormon Stories",ClosingSong="Christmas Bells", BishopricId=1, SacramentDate=DateTime.Parse("2009-05-06")},
+                new Planner{OpeningSong="Mary had a Little Lamb",SacramentSong="Article of Faith 1",IntermediateSong="A Child's Prayer",ClosingSong="Go Tell it on the Mountain", BishopricId=2, SacramentDate=DateTime.Parse("2009-06-08")},
+                new Planner{OpeningSong="Hickory Dickory Dock",SacramentSong="Article of Faith 2",IntermediateSong="",ClosingSong="Silent Night", BishopricId=3, SacramentDate=DateTime.Parse("2009-11-25")},
+                new Planner{OpeningSong="Little Miss Muffet",SacramentSong="Article of Faith 4",IntermediateSong="Pioneer Children",ClosingSong="Joy to the World", BishopricId=4, SacramentDate=DateTime.Parse("2012-01-15")},
+                new Planner{OpeningSong="Hey Diddle Diddle",SacramentSong="Article of Faith 5",IntermediateSong="All Over the World",ClosingSong="Picture a Christmas", BishopricId=5, SacramentDate=DateTime.Parse("2018-07-12")},
+                new Planner{OpeningSong="Funky Jesus Music",SacramentSong="Article of Faith 6",IntermediateSong="",ClosingSong="Said Samuel", BishopricId=1, SacramentDate=DateTime.Parse("2016-06-02")}
             };
 
             foreach (Planner p in planner)
