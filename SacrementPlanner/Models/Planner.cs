@@ -28,6 +28,7 @@ namespace SacrementPlanner.Models
         public DateTime SacramentDate { get; set; }
         [Required]
         [ForeignKey("Bishopric")]
+        [Display(Name = "Bishopric")]
         public int BishopricId { get; set; }
 
         public Bishopric Bishopric { get; set; }       

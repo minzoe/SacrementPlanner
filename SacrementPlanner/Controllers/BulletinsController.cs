@@ -57,7 +57,8 @@ namespace SacrementPlanner.Views.Bulletins
         [HttpGet]
         public IActionResult Create()
         {
-            ViewData["BishopricId"] = new SelectList(_context.Bishoprics, "ID", "Name");
+            var bishopricData = _context.Bishoprics.Where(b => b.Active == true);
+            ViewData["BishopricId"] = new SelectList(bishopricData, "ID", "Name");
             return View();
         }
 
