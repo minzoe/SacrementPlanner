@@ -11,5 +11,7 @@ namespace SacrementPlanner.Models
         public string Name { get; set; }
         public string Topic { get; set; }
         public int PlannerId { get; set; }
+
+        public Planner Planner { get; set; }
     }
 }

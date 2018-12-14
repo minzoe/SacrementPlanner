@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SacrementPlanner.Models.Planner>
+﻿@model SacrementPlanner.ViewModels.IndexData
 
 @{
     ViewData["Title"] = "Index";
@@ -13,53 +13,79 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.OpeningSong)
+                Opening Song
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SacramentSong)
+                Sacrement Song
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IntermediateSong)
+                Intermediate Song
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ClosingSong)
+                Closing Song
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SacramentDate)
+                Sacrament Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Bishopric)
+                Bishopric
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OpeningSong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SacramentSong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IntermediateSong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClosingSong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SacramentDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bishopric.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Planners)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpeningSong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SacramentSong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IntermediateSong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClosingSong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SacramentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bishopric.Name)
+                </td>
+                <td>
+                    <a asp-action="Index" asp-route-id="@item.ID">Speakers</a> |
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@if (Model.Speakers != null)
+{
+    <h3>
+        Speakers
+    </h3>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Topic</th>
+        </tr>
+        @foreach (var item in Model.Speakers)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Topic
+                </td>
+            </tr>
+        }
+    </table>
+}

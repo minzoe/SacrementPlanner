@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SacrementPlanner.Models;
+using SacrementPlanner.ViewModels;
 
-namespace SacrementPlanner.Controllers
+namespace SacrementPlanner.Views.Bulletins
 {
     public class BulletinsController : Controller
     {
@@ -19,11 +20,18 @@ namespace SacrementPlanner.Controllers
         }
 
         // GET: Bulletins
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> Index(int? ID)
         {
-            return View(await _context.Planner
-                .Include(b => b.Bishopric)
-                .ToListAsync());
+            var viewModel = new IndexData();
+            viewModel.Planners = await _context.Planner.Include(p => p.Bishopric).ToListAsync();
+
+            if (ID != null)
+            {
+                viewModel.Speakers = await _context.Speakers.Include(x => x.Planner).Where(i => i.PlannerId == ID.Value).ToListAsync();
+            }
+
+            return View(viewModel);
         }
 
         // GET: Bulletins/Details/5
@@ -35,6 +43,7 @@ namespace SacrementPlanner.Controllers
             }
 
             var planner = await _context.Planner
+                .Include(p => p.Bishopric)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (planner == null)
             {
@@ -45,8 +54,10 @@ namespace SacrementPlanner.Controllers
         }
 
         // GET: Bulletins/Create
+        [HttpGet]
         public IActionResult Create()
         {
+            ViewData["BishopricId"] = new SelectList(_context.Bishoprics, "ID", "Name");
             return View();
         }
 
@@ -63,10 +74,12 @@ namespace SacrementPlanner.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BishopricId"] = new SelectList(_context.Bishoprics, "ID", "Name");
             return View(planner);
         }
 
         // GET: Bulletins/Edit/5
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,6 +92,7 @@ namespace SacrementPlanner.Controllers
             {
                 return NotFound();
             }
+            ViewData["BishopricId"] = new SelectList(_context.Bishoprics, "ID", "Name", planner.BishopricId);
             return View(planner);
         }
 
@@ -114,10 +128,12 @@ namespace SacrementPlanner.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BishopricId"] = new SelectList(_context.Bishoprics, "ID", "Name", planner.BishopricId);
             return View(planner);
         }
 
         // GET: Bulletins/Delete/5
+        [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,6 +142,7 @@ namespace SacrementPlanner.Controllers
             }
 
             var planner = await _context.Planner
+                .Include(p => p.Bishopric)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (planner == null)
             {
